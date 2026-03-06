@@ -109,7 +109,7 @@ st.markdown("---")
 with st.sidebar:
     logo_path = Path(__file__).resolve().parent / "logo-jech.webp"
     if logo_path.exists():
-        st.image(str(logo_path), use_container_width=True)
+        st.image(str(logo_path), width=220)
     else:
         st.caption("Jech Capital")
 
