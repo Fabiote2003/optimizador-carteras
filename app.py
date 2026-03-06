@@ -6,6 +6,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import warnings
+from pathlib import Path
 
 warnings.filterwarnings("ignore")
 
@@ -43,18 +44,56 @@ from ui.components import (
 
 
 st.set_page_config(
-    page_title="Optimizador de Carteras",
+    page_title="Jech Capital | Optimizador de Carteras",
     page_icon="📈",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-st.title("📈 Optimizador de Carteras")
-st.markdown("*Optimizacion de portfolios usando teoria de Markowitz*")
+st.markdown(
+    """
+    <style>
+        [data-testid="stSidebar"] > div:first-child {
+            background-color: #4b7ab0;
+        }
+
+        [data-testid="stSidebar"],
+        [data-testid="stSidebar"] * {
+            color: #ffffff;
+        }
+
+        [data-testid="stSidebar"] input,
+        [data-testid="stSidebar"] textarea,
+        [data-testid="stSidebar"] div[data-baseweb="select"] > div {
+            color: #ffffff !important;
+            background-color: rgba(255, 255, 255, 0.15) !important;
+        }
+
+        [data-testid="stSidebar"] input::placeholder,
+        [data-testid="stSidebar"] textarea::placeholder {
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+
+        [data-testid="stSidebar"] hr {
+            border-color: rgba(255, 255, 255, 0.35);
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.title("📈 Jech Capital | Optimizador de Carteras")
+st.markdown("*Solucion de optimizacion de portfolios basada en teoria de Markowitz*")
 st.markdown("---")
 
 
 with st.sidebar:
+    logo_path = Path(__file__).resolve().parent / "logo-jech.webp"
+    if logo_path.exists():
+        st.image(str(logo_path), use_container_width=True)
+    else:
+        st.caption("Jech Capital")
+
     st.header("Parametros de Entrada")
 
     tickers_input = st.text_input(
@@ -356,7 +395,10 @@ if st.session_state.get('optimization_done', False):
         st.info(get_stress_interpretation())
 
 else:
-    st.info("👈 Configure los parametros en el panel lateral y presione **Optimizar Cartera** para comenzar.")
+    st.info(
+        "👈 Bienvenido a Jech Capital. Configure los parametros en el panel lateral y "
+        "presione **Optimizar Cartera** para comenzar."
+    )
 
     st.markdown("""
     ### Como usar esta herramienta:
@@ -381,7 +423,7 @@ else:
 st.markdown("---")
 st.markdown(
     "<div style='text-align: center; color: gray; font-size: 12px;'>"
-    "Desarrollado con Streamlit | Datos de Yahoo Finance"
+    "Herramienta desarrollada por Jech Capital | Datos de Yahoo Finance"
     "</div>",
     unsafe_allow_html=True
 )
