@@ -96,26 +96,6 @@ st.markdown(
             box-shadow: 0 0 0 0.2rem rgba(22, 163, 74, 0.35) !important;
             color: #ffffff !important;
         }
-
-        /* Mejor contraste para slider sobre fondo azul */
-        [data-testid="stSidebar"] div[data-baseweb="slider"] > div > div:nth-child(1) {
-            background: rgba(255, 255, 255, 0.35) !important;
-        }
-
-        [data-testid="stSidebar"] div[data-baseweb="slider"] > div > div:nth-child(2) {
-            background: #ffffff !important;
-        }
-
-        [data-testid="stSidebar"] div[data-baseweb="slider"] [role="slider"] {
-            background: #ffffff !important;
-            border: 2px solid #1f4b7a !important;
-            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2) !important;
-        }
-
-        [data-testid="stSidebar"] div[data-baseweb="slider"] [data-testid="stTickBarMin"],
-        [data-testid="stSidebar"] div[data-baseweb="slider"] [data-testid="stTickBarMax"] {
-            color: #ffffff !important;
-        }
     </style>
     """,
     unsafe_allow_html=True
@@ -129,7 +109,7 @@ st.markdown("---")
 with st.sidebar:
     logo_path = Path(__file__).resolve().parent / "logo-jech.webp"
     if logo_path.exists():
-        st.image(str(logo_path), width=230)
+        st.image(str(logo_path), use_container_width=True)
     else:
         st.caption("Jech Capital")
 
