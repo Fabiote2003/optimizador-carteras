@@ -65,8 +65,9 @@ st.markdown(
         [data-testid="stSidebar"] input,
         [data-testid="stSidebar"] textarea,
         [data-testid="stSidebar"] div[data-baseweb="select"] > div {
-            color: #ffffff !important;
-            background-color: rgba(255, 255, 255, 0.15) !important;
+            color: #000000 !important;
+            -webkit-text-fill-color: #000000 !important;
+            background-color: rgba(255, 255, 255, 0.92) !important;
         }
 
         [data-testid="stSidebar"] input::placeholder,
@@ -90,10 +91,18 @@ st.markdown("---")
 with st.sidebar:
     logo_path = Path(__file__).resolve().parent / "logo-jech.webp"
     if logo_path.exists():
-        st.image(str(logo_path), use_container_width=True)
+        logo_col, text_col = st.columns([1, 3])
+        with logo_col:
+            st.image(str(logo_path), width=42)
+        with text_col:
+            st.markdown(
+                "<div style='margin-top: 6px; font-size: 20px; font-weight: 700;'>Jech Capital</div>",
+                unsafe_allow_html=True
+            )
     else:
         st.caption("Jech Capital")
 
+    st.markdown("<div style='margin-bottom: 10px;'></div>", unsafe_allow_html=True)
     st.header("Parametros de Entrada")
 
     tickers_input = st.text_input(
