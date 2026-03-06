@@ -78,6 +78,24 @@ st.markdown(
         [data-testid="stSidebar"] hr {
             border-color: rgba(255, 255, 255, 0.35);
         }
+
+        [data-testid="stSidebar"] .stButton > button {
+            background-color: #16a34a !important;
+            color: #ffffff !important;
+            border: 1px solid #15803d !important;
+            font-weight: 600;
+        }
+
+        [data-testid="stSidebar"] .stButton > button:hover {
+            background-color: #15803d !important;
+            border-color: #166534 !important;
+            color: #ffffff !important;
+        }
+
+        [data-testid="stSidebar"] .stButton > button:focus {
+            box-shadow: 0 0 0 0.2rem rgba(22, 163, 74, 0.35) !important;
+            color: #ffffff !important;
+        }
     </style>
     """,
     unsafe_allow_html=True
@@ -91,14 +109,7 @@ st.markdown("---")
 with st.sidebar:
     logo_path = Path(__file__).resolve().parent / "logo-jech.webp"
     if logo_path.exists():
-        logo_col, text_col = st.columns([1, 3])
-        with logo_col:
-            st.image(str(logo_path), width=42)
-        with text_col:
-            st.markdown(
-                "<div style='margin-top: 6px; font-size: 20px; font-weight: 700;'>Jech Capital</div>",
-                unsafe_allow_html=True
-            )
+        st.image(str(logo_path), use_container_width=True)
     else:
         st.caption("Jech Capital")
 
